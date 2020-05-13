@@ -1,0 +1,19 @@
+{
+  "name": "fullstack_summer",
+  "version": "1.0.0",
+  "description": "app for fullstack summer course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aceisScope/fullstack_summer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aceisScope/fullstack_summer/issues"
+  },
+  "homepage": "https://github.com/aceisScope/fullstack_summer#readme"
+}
