@@ -2,7 +2,7 @@
   "name": "fullstack_summer",
   "version": "1.0.0",
   "description": "app for fullstack summer course",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/aceisScope/fullstack_summer/issues"
   },
-  "homepage": "https://github.com/aceisScope/fullstack_summer#readme"
+  "homepage": "https://github.com/aceisScope/fullstack_summer#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
 }
