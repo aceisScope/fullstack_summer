@@ -4,6 +4,13 @@ var path = require('path');
 
 var app = express();
 
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}))
+
+// Static path
+app.use(express.static(path.join(__dirname, 'public')))
+
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
