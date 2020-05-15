@@ -1,6 +1,8 @@
 <html>
     <head>
-        <title></title>
+        <title>CustomerApp</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script src="js/main.js"></script>
     </head>
     <body>
         <% if(errors != undefined){  %>
@@ -29,8 +31,9 @@
 
         <p>
             <% users.forEach(function(user){ %>
-                <li><%= user.first_name %> <%= user.last_name %></li>
-            <%  }) %>
+                <h3> <%= user.first_name%> <%= user.last_name%>  </h3>
+                <a href="" class="btn btn-primary deleteUser" data-id='<%= user._id %>'>Delete</a>
+            <% }) %>
         </p>
     </body>
 </html>

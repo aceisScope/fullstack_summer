@@ -2,6 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 const { check, validationResult } = require('express-validator');
+const mongojs = require('mongojs')
+const db = mongojs('customerapp', ['users'])
+var ObjectId = mongojs.ObjectId
 
 var app = express();
 
@@ -14,7 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
 
 // Static path
-// app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 //setup global variables
 app.use(function(req, res, next){
@@ -22,29 +25,12 @@ app.use(function(req, res, next){
   next();
 });
 
-var users = [{
-  id: 1,
-  first_name: 'John',
-  last_name: 'Doe',
-  email: 'johndoe@gmail.com'
-},
-{
-  id: 2,
-  first_name: 'Bob',
-  last_name: 'Smith',
-  email: 'bobsmith@gmail.com'
-},
-{
-  id: 1,
-  first_name: 'Charlie',
-  last_name: 'Bowl',
-  email: 'charliebowl@gmail.com'
-}]
-
 app.get('/', function (req, res) {
-  res.render('index', {
-    title: 'Customers',
-    users: users
+  db.users.find(function (err, docs) {
+    res.render('index', {
+      title: 'Customers',
+      users: docs
+    })
   })
 });
 
@@ -58,19 +44,31 @@ app.post('/user/add', [
 ], (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    res.render('index', {
-      title: 'Customers',
-      users: users,
-      errors: errors.array()
+    db.users.find((err, users) => {
+      res.render('index', {
+        title: 'Customers',
+        users: users,
+        errors: errors.array()
+      })
     })
   } else {
     var newUser = {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
+      first_name: req.body.firstName,
+      last_name: req.body.lastName,
       email: req.body.email
-    };
-    res.json(newUser)
+    }
+    db.users.insert(newUser, (err, result) => {
+      if(err) {
+        console.log(err)
+      }
+      res.redirect('/')
+    })
   }
+})
+
+app.delete('/users/delete/:id', function(req, res){
+  db.users.remove({_id: ObjectId(req.params.id)})
+  res.redirect('/')
 })
 
 app.listen(3000, function () {
