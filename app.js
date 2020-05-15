@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
+const { check, validationResult } = require('express-validator');
 
 var app = express();
 
@@ -14,6 +15,12 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 // Static path
 // app.use(express.static(path.join(__dirname, 'public')))
+
+//setup global variables
+app.use(function(req, res, next){
+  res.locals.errors = null;
+  next();
+});
 
 var users = [{
   id: 1,
@@ -41,13 +48,29 @@ app.get('/', function (req, res) {
   })
 });
 
-app.post('/user/add', function(req, res){
-  var newUser = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email
-  };
-  console.log(newUser)
+app.post('/user/add', [
+  // email must be an email
+  check('email').isEmail(),
+  // firstname must be at least 5 chars long
+  check('firstName').isLength({ min: 5 }),
+  // lastname can't be empty
+  check('lastName').not().isEmpty()
+], (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    res.render('index', {
+      title: 'Customers',
+      users: users,
+      errors: errors.array()
+    })
+  } else {
+    var newUser = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email
+    };
+    res.json(newUser)
+  }
 })
 
 app.listen(3000, function () {

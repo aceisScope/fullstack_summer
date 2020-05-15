@@ -3,6 +3,12 @@
         <title></title>
     </head>
     <body>
+        <% if(errors != undefined){  %>
+            <% errors.forEach(function(err){ %>
+                <h4><%= err.msg %></h4>
+              <% }) %>
+        <% } %>
+
         <h2>Add User</h2>
         <form method="POST" action="/user/add" style="width: 30%">
         <div class="form-group">
