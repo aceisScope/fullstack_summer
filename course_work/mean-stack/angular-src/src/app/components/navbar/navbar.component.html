@@ -11,6 +11,12 @@
         </ul>
         <ul class="navbar-nav">
             <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+                <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
+            </li>
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+                <a class="nav-link" [routerLink]="['/profile']">Profile</a>
+            </li>
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
                 <a class="nav-link" [routerLink]="['/login']">Login</a>
             </li>
             <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
