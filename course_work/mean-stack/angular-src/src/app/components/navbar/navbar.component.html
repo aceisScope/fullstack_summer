@@ -16,10 +16,10 @@
             <li *ngIf="authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
                 <a class="nav-link" [routerLink]="['/profile']">Profile</a>
             </li>
-            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+            <li *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
                 <a class="nav-link" [routerLink]="['/login']">Login</a>
             </li>
-            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+            <li *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
                 <a class="nav-link" [routerLink]="['/register']">Register</a>
             </li>
             <li *ngIf="authService.isLoggedIn()" class="nav-item">

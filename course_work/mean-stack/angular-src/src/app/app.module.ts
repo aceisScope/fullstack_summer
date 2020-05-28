@@ -17,6 +17,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service'
+import { AuthGuard } from './guards/auth.guard'
 
 export function tokenGetter() {
   return localStorage.getItem("id_token");
@@ -46,7 +47,8 @@ export function tokenGetter() {
   ],
   providers: [
     ValidateService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
