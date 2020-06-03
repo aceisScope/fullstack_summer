@@ -1,23 +1,4 @@
-<div> 
-    <mat-toolbar color="primary">  
-        <ul fxLayout fxLayoutGap="20px">
-            <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/']">MEAH Auth App</a>
-            <a mat-button *ngIf="authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/dashboard']">Dashboard</a>
-        </ul>
-        <div fxFlex fxLayout fxLayoutAlign="flex-end">
-            <ul fxLayout fxLayoutGap="20px">
-                <a mat-button *ngIf="authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/profile']">Profile</a>
-                <a mat-button *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/login']">Login</a>
-                <a mat-button *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/register']">Register</a>
-                <a mat-button *ngIf="authService.isLoggedIn()" href="#" (click)='onLogoutClick()'>Logout</a>
-            </ul>
-        </div>
-    </mat-toolbar>
-</div>
-  
-  
-  
-  <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="#">MEAN Auth App</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
@@ -46,4 +27,4 @@
             </li>
         </ul>
     </div>
-</nav> -->
+</nav>
