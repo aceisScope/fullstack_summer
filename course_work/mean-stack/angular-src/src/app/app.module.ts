@@ -17,7 +17,10 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service'
-import { AuthGuard } from './guards/auth.guard'
+import { AuthGuard } from './guards/auth.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 export function tokenGetter() {
   return localStorage.getItem("id_token");
@@ -43,7 +46,10 @@ export function tokenGetter() {
       config: {
         tokenGetter: tokenGetter
       }
-    })
+    }),
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    FlexLayoutModule
   ],
   providers: [
     ValidateService,
