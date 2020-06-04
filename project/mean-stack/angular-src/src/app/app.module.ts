@@ -19,9 +19,6 @@ import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service'
 import { AuthGuard } from './guards/auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
 
 export function tokenGetter() {
   return localStorage.getItem("id_token");
@@ -48,10 +45,7 @@ export function tokenGetter() {
         tokenGetter: tokenGetter
       }
     }),
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    FlexLayoutModule,
-    MatButtonModule
+    BrowserAnimationsModule
   ],
   providers: [
     ValidateService,
