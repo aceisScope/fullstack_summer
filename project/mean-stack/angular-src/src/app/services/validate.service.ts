@@ -18,4 +18,9 @@ export class ValidateService {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
   }
+
+  validateAvatarURL(avatar) {
+    const re = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g
+    return re.test(avatar)
+  }
 }

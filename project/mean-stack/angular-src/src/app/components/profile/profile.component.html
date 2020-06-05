@@ -1,12 +1,17 @@
 <div class="container">
   <h2 class="page-header">{{user.name}}</h2>
-  <div  class="card flex-md-row" *ngIf="user">
-    <img src="https://pbs.twimg.com/profile_images/635600931283861504/r7BZqDM0_400x400.jpg" alt="..." class="img-thumbnail">
+  <div  class="card flex-md-row mb-5 " *ngIf="user">
+    <img src="{{user.avatar}}" alt="..." class="img-thumbnail">
     <ul class="list-group">
       <li class="list-group-item"><i class="material-icons">face</i>Username : {{user.username}}</li>
       <li class="list-group-item"><i class="material-icons">inbox</i>Email : {{user.email}}</li>
     </ul>
   </div>
+  <form (submit)="onAvatarSubmit()">
+    <div class="form-group">
+      <input class="form-control" type="text" placeholder="New avatar URL" [(ngModel)]="avatar" name="avatar">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
 </div>
-
 

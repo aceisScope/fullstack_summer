@@ -47,7 +47,8 @@ router.post('/authenticate', (req, res, next) => {
             id: user._id,
             name: user.name,
             username: user.username,
-            email: user.email
+            email: user.email,
+            avatar: user.avatar
           }
         })
       } else {
@@ -60,6 +61,17 @@ router.post('/authenticate', (req, res, next) => {
 // Profile
 router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
   res.json({user: req.user});
+});
+
+// Profile
+router.post('/updateAvatar', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+  const username = req.body.username
+  const newAvatar = req.body.avatar
+
+  User.updateUserAvatar(username, newAvatar, (err, user) => {
+    if(err) throw err;
+    res.json({user: user});
+  })
 });
 
 module.exports = router;

@@ -17,6 +17,10 @@ const UserSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    avatar: {
+        type: String,
+        required: false
     }
 })
 
@@ -47,4 +51,9 @@ module.exports.comparePassword = (candidatePassword, hash, callback) => {
         if (err) throw err
         callback(null, isMatch)
     })
+}
+
+module.exports.updateUserAvatar = (username, newAvatar, callback) => {
+    const query = {username: username}
+    User.findOneAndUpdate(query, {avatar: newAvatar}, {new: true}, callback)
 }
