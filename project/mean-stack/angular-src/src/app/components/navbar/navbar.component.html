@@ -11,7 +11,7 @@
         </ul>
         <ul class="navbar-nav">
             <li *ngIf="authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
-                <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
+                <a class="nav-link" [routerLink]="['/blog']">Blogs</a>
             </li>
             <li *ngIf="authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
                 <a class="nav-link" [routerLink]="['/profile']">Profile</a>
