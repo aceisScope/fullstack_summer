@@ -4,6 +4,10 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
+const Blog = require('../models/blog');
+const mongoose = require('mongoose')
+
+var ObjectId = mongoose.Types.ObjectId
 
 // Register
 router.post('/register', (req, res, next) => {
@@ -63,7 +67,6 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res,
   res.json({user: req.user});
 });
 
-// Profile
 router.post('/updateAvatar', passport.authenticate('jwt', {session:false}), (req, res, next) => {
   const username = req.body.username
   const newAvatar = req.body.avatar
@@ -71,6 +74,24 @@ router.post('/updateAvatar', passport.authenticate('jwt', {session:false}), (req
   User.updateUserAvatar(username, newAvatar, (err, user) => {
     if(err) throw err;
     res.json({user: user});
+  })
+});
+
+// Blog
+router.post('/blog', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+  const newBlog = new Blog({
+    title: req.body.title,
+    tag: req.body.tag,
+    content: req.body.content,
+    author: ObjectId(req.body.userid)
+  })
+  
+  Blog.addBlog(newBlog, (err, user) => {
+    if(err) {
+      res.json({success: false, msg: 'Failed to create new blog'});
+    } else {
+      res.json({success: true, msg: 'New blog created'});
+    }
   })
 });
 
