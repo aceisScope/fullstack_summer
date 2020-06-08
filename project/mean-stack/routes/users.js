@@ -95,4 +95,13 @@ router.post('/blog', passport.authenticate('jwt', {session:false}), (req, res, n
   })
 });
 
+router.get('/blog', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+  const author = new ObjectId(req.query.userid)
+  console.log(author)
+
+  Blog.getBlogsByAuthor(author, (err, blogs) => {
+    res.json({blogs: blogs});
+  })
+});
+
 module.exports = router;

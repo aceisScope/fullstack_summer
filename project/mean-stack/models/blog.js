@@ -25,3 +25,8 @@ const Blog = module.exports = mongoose.model('Blog', BlogSchema)
 module.exports.addBlog = (newBlog, callback) => {
     newBlog.save(callback)
 }
+
+module.exports.getBlogsByAuthor = (author, callback) => {
+    const query = { author: author}
+    Blog.find(query, callback)
+}

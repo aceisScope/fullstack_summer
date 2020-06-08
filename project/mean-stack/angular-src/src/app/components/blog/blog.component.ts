@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BlogService } from '../../services/blog.service'
 
 @Component({
   selector: 'app-blog',
@@ -8,20 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class BlogComponent implements OnInit {
   blogs: any
 
-  constructor() { }
+  constructor(private blogService: BlogService) { }
 
   ngOnInit(): void {
-    this.blogs = [
-      {
-        "title": "One"
-      },
-      {
-        "title": "Two"
-      },
-      {
-        "title": "Three"
-      }
-    ]
+    const user =  JSON.parse(localStorage.getItem('user'))
+    console.log(user)
+    this.blogService.getBlogs(user).subscribe(data => {
+      this.blogs = (data as any).blogs
+    }, err => {
+      console.log(err)
+      return false
+    })
   }
 
 }
