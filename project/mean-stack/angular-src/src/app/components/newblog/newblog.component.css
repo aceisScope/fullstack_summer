@@ -1,0 +1,5 @@
+.form-group textarea {
+    border: 1px solid #D2D2D2;
+    transition: border-color 1s;
+    background-image:none;
+}

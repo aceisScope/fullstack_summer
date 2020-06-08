@@ -10,6 +10,7 @@
                     </h3>
                     <div class="mb-1 text-muted">Nov 12</div>
                     <p class="card-text mb-auto">{{ blog.content }}</p>
+                    <a href="#">Continue reading</a>
                   </div>
                 </div>
             </div>
@@ -21,10 +22,12 @@
                         <a class="text-dark" href="#">{{ blogs[i+1].title }}</a>
                     </h3>
                     <div class="mb-1 text-muted">Nov 12</div>
-                    <p class="card-text mb-auto">{{ blogs[i+1].content }}</p>
+                    <p class="card-text mb-auto">{{ blog.content }}</p>
+                    <a href="#">Continue reading</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <a class="btn btn-raised btn-primary" color="primary" [routerLink]="['/newblog']">New Blog</a> 
 </div>

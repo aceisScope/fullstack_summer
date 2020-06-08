@@ -19,6 +19,7 @@ import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service'
 import { AuthGuard } from './guards/auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NewblogComponent } from './components/newblog/newblog.component';
 
 
 export function tokenGetter() {
@@ -33,7 +34,8 @@ export function tokenGetter() {
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
-    BlogComponent
+    BlogComponent,
+    NewblogComponent
   ],
   imports: [
     BrowserModule,

@@ -23,4 +23,11 @@ export class ValidateService {
     const re = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g
     return re.test(avatar)
   }
+
+  validateBlog(blog) {
+    if (blog.title == undefined || blog.content == undefined || blog.tag == undefined) {
+      return false
+    }
+    return true
+  }
 }
