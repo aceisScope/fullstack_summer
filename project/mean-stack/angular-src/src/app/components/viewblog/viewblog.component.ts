@@ -6,11 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./viewblog.component.css']
 })
 export class ViewblogComponent implements OnInit {
+  blog: any
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(history.state.data)
+    this.blog = history.state.data
   }
 
 }
