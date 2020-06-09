@@ -9,7 +9,7 @@
                       <a class="text-dark" href="#">{{ blog.title }}</a>
                     </h3>
                     <p class="card-text mb-auto">{{ blog.content }}</p>
-                    <a href="#">Continue reading</a>
+                    <a [routerLink]="['/blog', blog._id]" [state]="{data: blog}">Continue reading</a>
                   </div>
                 </div>
             </div>
@@ -20,8 +20,8 @@
                     <h3 class="mb-0">
                         <a class="text-dark" href="#">{{ blogs[i+1].title }}</a>
                     </h3>
-                    <p class="card-text mb-auto">{{ blog.content }}</p>
-                    <a href="#">Continue reading</a>
+                    <p class="card-text mb-auto">{{ blogs[i+1].content }}</p>
+                    <a [routerLink]="['/blog', blogs[i+1]._id]" [state]="{data: blogs[i+1]}">Continue reading</a>
                     </div>
                 </div>
             </div>
