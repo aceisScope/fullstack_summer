@@ -21,4 +21,21 @@ export class BlogService {
     }
     return this.http.get('http://localhost:3000/users/blog',  httpOptions)
   }
+
+  addNewBlog(blog, user) {
+    const body = {
+      userid: user.id,
+      title: blog.title,
+      tag: blog.title,
+      content: blog.content
+    }
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': localStorage.getItem('id_token')
+      }),
+    }
+    return this.http.post('http://localhost:3000/users/blog', body, httpOptions)
+  }
 }

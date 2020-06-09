@@ -13,7 +13,6 @@ export class BlogComponent implements OnInit {
 
   ngOnInit(): void {
     const user =  JSON.parse(localStorage.getItem('user'))
-    console.log(user)
     this.blogService.getBlogs(user).subscribe(data => {
       this.blogs = (data as any).blogs
     }, err => {
