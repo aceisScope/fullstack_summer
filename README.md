@@ -3,7 +3,9 @@ This is a project for Software Development Skills: Full-Stack course of LUT univ
 
 ### In the reposotary there are the course work and the final project.
 
-To run the final project, first start mongodb service. On Mac OS the command is `brew services stop mongodb-community@4.2`, depending on the mongoDB version. 
+To run the final project, first node modules need to be installed locally since they're ignored in git repo. 
+
+Then start mongodb service. On Mac OS the command is `brew services stop mongodb-community@4.2`, depending on the mongoDB version. 
 
 Then simple open /project/mean-stack, do `node app.js`.
 First you mean need to register as a new user. 
