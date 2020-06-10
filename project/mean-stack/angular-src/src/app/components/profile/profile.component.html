@@ -1,7 +1,7 @@
 <div class="container">
   <h2 class="page-header">{{user.name}}</h2>
   <div  class="card flex-md-row mb-5 " *ngIf="user">
-    <img src="{{user.avatar}}" alt="..." class="img-thumbnail">
+    <img *ngIf="user.avatar != undefined" src="{{user.avatar}}" alt="..." class="img-thumbnail">
     <ul class="list-group">
       <li class="list-group-item"><i class="material-icons">face</i>Username : {{user.username}}</li>
       <li class="list-group-item"><i class="material-icons">inbox</i>Email : {{user.email}}</li>
